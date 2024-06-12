@@ -23,13 +23,22 @@ class UI:
         self.renderer = Renderer()
 
     def render(self):
+        self.col_header = tk_tools.LabelGrid(self.root, self.cols)
+        self.col_header.add_row(['                   ' + chr(ord('a') + i) + '                  ' for i in range(self.cols)])
+        self.col_header.grid(row=0, column=1, columnspan=1, sticky='ew')
+
+        self.row_header = tk_tools.LabelGrid(self.root, 1)
+        for i in range(self.rows):
+            self.row_header.add_row([str(i + 1)])
+        self.row_header.grid(row=1, column=0, sticky='ew')
+
         self.entry_grid = tk_tools.EntryGrid(self.root, self.cols)
         for _ in range(self.rows):
             self.entry_grid.add_row()
-        self.entry_grid.grid(row=0, column=0, sticky='ew')
+        self.entry_grid.grid(row=1, column=1, sticky='ew')
 
         self.add_row_btn = tk.Button(self.root, text='Calculate', command=self.re_render)
-        self.add_row_btn.grid(row=1, column=0, columnspan=2, sticky='ew')
+        self.add_row_btn.grid(row=2, column=0, columnspan=2, sticky='ew')
 
     def _parse_cell_type(self, cell_data) -> CellType:
         cell_type = CellType.primitive
@@ -65,7 +74,7 @@ class UI:
         self.entry_grid = tk_tools.EntryGrid(self.root, len(new_data[0]))
         for row in range(len(new_data)):
             self.entry_grid.add_row(new_data[row])
-        self.entry_grid.grid(row=0, column=0, sticky='ew')
+        self.entry_grid.grid(row=1, column=1, sticky='ew')
 
 if __name__ == '__main__':
 
