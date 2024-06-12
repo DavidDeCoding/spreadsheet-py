@@ -13,5 +13,6 @@ It supports three different formulas for now:
 
 # Evaluates Dependent Cells
 
-It supports evaluating dependent cells.
+It supports evaluating dependent cells.  
+
 ![Evaluates Dependent Cells](https://github.com/DavidDeCoding/spreadsheet-py/blob/4276a6e9c445a4dcbdf44153bbae0dbe14c4b745/dependent.gif)
